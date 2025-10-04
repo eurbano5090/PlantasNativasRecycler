@@ -1,6 +1,7 @@
 package com.android.myappnative.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -23,15 +24,21 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.android.myappnative.data.Arbol
+import com.android.myappnative.navigation.ArbolDetail
 
 
 @Composable
-fun ArbolItem ( modifier: Modifier = Modifier , arbol: Arbol){
+fun ArbolItem (arbol: Arbol, navController: NavController, modifier: Modifier = Modifier){
     Card(
         modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 4.dp),
+            .padding(horizontal = 16.dp, vertical = 4.dp)
+            .clickable {
+        // Aquí navegamos al detalle usando typed navigation
+                navController.navigate("arbolDetail/${arbol.arbolId}")
+    },
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
         Row(

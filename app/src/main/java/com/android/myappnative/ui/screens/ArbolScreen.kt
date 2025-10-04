@@ -12,12 +12,13 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavController
 import com.android.myappnative.components.ArbolItem
 import com.android.myappnative.data.ArbolData
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ArbolScreen(modifier: Modifier = Modifier) {
+fun ArbolScreen(navController: NavController, modifier: Modifier = Modifier) {
     Scaffold(
         topBar = {
             TopAppBar(
@@ -33,7 +34,7 @@ fun ArbolScreen(modifier: Modifier = Modifier) {
             modifier = Modifier.fillMaxSize().padding(padding)
         ) {
             items(ArbolData.listaArboles) { arbol ->
-                ArbolItem(arbol = arbol)
+                ArbolItem(arbol = arbol, navController = navController)
             }
         }
     }
